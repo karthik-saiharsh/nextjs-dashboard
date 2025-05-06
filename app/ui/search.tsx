@@ -12,8 +12,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   const handleSearch = useDebouncedCallback ((term: string) => {
     const params = new URLSearchParams(searchParams);
-
-
+    params.set('page', '1');
     if(term) {
       params.set('query', term);
     } else {
@@ -21,7 +20,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     }
 
     replace(`${path}?${params.toString()}`);
-  }, 500);
+  }, 1000);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
